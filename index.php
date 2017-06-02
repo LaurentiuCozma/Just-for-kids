@@ -6,17 +6,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="style.css">
 </head>
-<<body style="margin-top: 0px;
+<body style="margin-top: 0px;
              margin-left: 0px;
              margin-bottom: 0px;
              margin-right: 0px;">
-    <ul class = "meniu">
-      <li><a href="login-register.html">Login|Register</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="teste.html">Teste</a></li>
-      <li><a href="despre.html">Despre</a></li>
-      <li><a class="active" href="index.html">Acasa</a></li>
-    </ul>
+    <?php
+      require_once 'meniu.php';
+
+    ?>
 
     <div class = "imag">
       <img class = "imaginetop" src="images/kids.png" alt=""><br>

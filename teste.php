@@ -10,13 +10,10 @@
              margin-left: 0px;
              margin-bottom: 0px;
              margin-right: 0px;">
-    <ul class = "meniu">
-      <li><a href="login-register.html">Login|Register</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a class="active" href="teste.html">Teste</a></li>
-      <li><a href="despre.html">Despre</a></li>
-      <li><a href="index.html">Acasa</a></li>
-    </ul>
+    <?php
+      require_once 'meniu.php';
+
+    ?>
 
     <div class = "imag">
       <img class = "imaginetop" src="images/kids.png" alt=""><br>

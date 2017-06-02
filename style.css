@@ -162,31 +162,11 @@
 	margin-bottom: 20px;
 	margin-top: 25px;
 }
-.autentificare input#parola1_parinte {
-    margin-left: 19px;
-}
 
 .inregistrare {
 	width:80%;
 	margin-left: 10%;
 	margin-bottom: 80px;
-}
-/* aliniera casutei de input */
-
-.inregistrare input#mail_parinte {
-	margin-left: 19px;
-}
-
-.inregistrare input#telefon_parinte {
-	margin-left: 16px;
-}
-
-.inregistrare input#nume2_parinte {
-	margin-left: 2px;
-}
-
-.inregistrare input#parola2_parinte {
-	margin-left: 21px;
 }
 
 /* end aliniere casutei de input */
@@ -206,7 +186,7 @@
     overflow: hidden;
     background-color: #333;
     width:100%;
-    position:fixed;
+    /*position:fixed;*/
     top:0px;
 	}
 
@@ -231,6 +211,11 @@
 }
 
 /*end navbar*/
+
+.form_table {
+	margin: 0 auto;
+}
+
 
 /*footer*/
 
