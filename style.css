@@ -1,0 +1,321 @@
+.box{
+	width:22%;
+	float:left;
+	margin-left: 2.3%;
+	border-radius:25px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.imgbox{
+	height:100px;
+}
+
+.box .imgbox, .box h2{
+	text-align:center;
+}
+
+.box p{
+	text-align: justify;
+	margin:10px;
+}
+
+.buton{
+	padding: 6px 12px;
+    font-size: 14px;
+    background-color: #02ACEE;
+    border-color: #ccc;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    margin-left:35%;
+}
+
+.buton a{
+	text-decoration-style: none;
+	text-decoration-line: none;
+}
+
+.imaginetop{
+	max-width:100%;
+	margin-top: 80px;
+}
+
+.imag{
+	text-align:center;
+	background-color: #02ACEE;
+
+
+}
+
+.centru .box{
+	background-color: #fff;
+}
+
+.detalii {
+	width:50%;
+	float:left;
+	margin-left: 2.3%;
+	border-radius:25px;
+	border: 1px solid black;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+.detalii h2 {
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+.detalii p {
+	margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+
+.resurse {
+	width:35%;
+	float:right;
+	margin-right: 2.3%;
+	border-radius:25px;
+	border: 1px solid black;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+.resurse li {
+	margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+.resurse p {
+	margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+.resurse h2 {
+	margin-right: 5%;
+    margin-left: 5%;
+    text-align: left;
+}
+
+/*.teste {
+	width:50%;
+	float:left;
+	margin-left: 2.3%;
+	border-radius:25px;
+	border: 1px solid black;
+	margin-bottom: 170px;
+	margin-top: 25px;
+}*/
+.formular {
+	width:48%;
+	float:left;
+	margin-left: 2.3%;
+	border-radius:25px;
+	border: 1px solid black;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+.formular h2{
+	margin-right: 2.5%;
+    margin-left: 2.5%;
+    text-align: left;
+}
+.formular p {
+	margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+}
+.formular .comment{
+	margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+
+}
+.contact {
+	width:40%;
+	float:right;
+	margin-right: 2.3%;
+	border-radius:25px;
+	border: 1px solid black;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+.contact h2 {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+}
+.contact p {
+	margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+}
+.contact li {
+	margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+.autentificare {
+	width:80%;
+	margin-left: 10%;
+	margin-bottom: 20px;
+	margin-top: 25px;
+}
+.autentificare input#parola1_parinte {
+    margin-left: 19px;
+}
+
+.inregistrare {
+	width:80%;
+	margin-left: 10%;
+	margin-bottom: 80px;
+}
+/* aliniera casutei de input */
+
+.inregistrare input#mail_parinte {
+	margin-left: 19px;
+}
+
+.inregistrare input#telefon_parinte {
+	margin-left: 16px;
+}
+
+.inregistrare input#nume2_parinte {
+	margin-left: 2px;
+}
+
+.inregistrare input#parola2_parinte {
+	margin-left: 21px;
+}
+
+/* end aliniere casutei de input */
+.daca {
+	width:80%;
+	float:middle;
+	margin-left: 10%;
+	margin-bottom: 20px;
+}
+
+/*navbar*/
+
+.meniu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width:100%;
+    position:fixed;
+    top:0px;
+	}
+
+.meniu  li {
+    float: right;
+    display: block;
+}
+
+.meniu  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.meniu  li a:hover {
+    background-color: #111;
+}
+.meniu li a.active {
+    background-color: #111;
+}
+
+/*end navbar*/
+
+/*footer*/
+
+.footer  {
+	position: static;
+    bottom:0;
+    height:50px;   
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    color: #fff;
+    width:100%;
+	}
+
+
+   
+
+/*end footer*/
+
+
+/*responsive*/
+
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+    .box{
+		width:47%;
+		margin-top:10px;
+		margin-left:1.8%;
+	}
+	.buton{
+		margin-left:40%;
+	}
+	.resurse{
+		width:35%;
+		margin-top:10px;
+		margin-left:1.8%;
+	}
+	.detalii{
+		width:47%;
+		margin-top:10px;
+		margin-left:1.8%;
+	}
+	.contact{
+		width:35%;
+		margin-top:10px;
+		margin-left:1.8%;
+	}
+	.formular{
+		width:47%;
+		margin-top:10px;
+		margin-left:1.8%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+    .box{
+		width:97%;
+		margin-top:10px;
+		margin-left:1.35%;
+	}
+	.buton{
+		margin-left:40%;
+	}
+	.resurse{
+		width: 97%;
+		margin-top:10px;
+		margin-left:1.35%;
+		align-content: middle;
+	}
+	.detalii{
+		width: 97%;
+		margin-top:10px;
+		margin-left:1.35%;
+		align-content: left;
+	}
+	.contact{
+		width: 97%;
+		margin-top:10px;
+		margin-left:1.35%;
+		align-content: left;
+	}
+	.formular{
+		width: 97%;
+		margin-top:10px;
+		margin-left:1.35%;
+		align-content: left;
+	}
+}
