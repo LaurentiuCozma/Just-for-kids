@@ -243,25 +243,24 @@
 /*pagina teste*/
 
 
-.AddTestTable {
+.AddTestTable,
+.AddChildTable,
+.LoginChildTable {
 	margin-left: auto;
 	margin-right: auto;
-
-	
 }
 
-.AddTestForm {
+.AddTestForm,
+.AddChildForm,
+.LoginChildForm {
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
-
-
 }
 
 
 .AddQuestionTable{
 	width: 100%;
-
 }
 
 .AddQuestionTable textarea {
@@ -273,9 +272,33 @@
 	width: 100%;
 }
 
+.TestsList {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 2px solid gray;
+}
 
+.TestTable {
+	border: 1px solid gray;
+	margin: 0 auto;
+}
 
+.TestTable th{
+	border: 1px solid gray;
+	background: yellow;
+}
 
+.TestTable td {
+	border: 1px solid gray;
+}
+
+.QuestionImage{
+	max-width: 200px;
+	max-height: 100px;
+}
 
 
 /*end pagina teste*/

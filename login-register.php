@@ -1,59 +1,53 @@
 <?php
 session_start();
-$link = mysql_connect('localhost', 'root', '');
-if (!$link) {
-    die('Eșec la conectare: ' . mysql_error());
-}
-$db_selected = mysql_select_db('proiect-tw', $link);
-if (!$db_selected) {
-    die ('Can\'t use proiect-tw : ' . mysql_error());
-}
 
+$link = mysqli_connect('localhost', 'root', '', 'proiect-tw');
+if (!$link) {
+    die('Eșec la conectare: ' . mysqli_error($link));
+}
 
 if(isset($_POST['register_parinte'])){
 
-
-
-
 $query = sprintf("INSERT INTO utilizatori (nume_prenume,email,telefon,parola,tip) values ('%s','%s','%s','%s','%s')",
-    mysql_real_escape_string($_POST['nume2_parinte']),
-    mysql_real_escape_string($_POST['mail_parinte']),
-    mysql_real_escape_string($_POST['telefon_parinte']),
-    mysql_real_escape_string(md5($_POST['parola2_parinte'])),
-    mysql_real_escape_string('parinte'));
+    mysqli_real_escape_string($link,$_POST['nume2_parinte']),
+    mysqli_real_escape_string($link,$_POST['mail_parinte']),
+    mysqli_real_escape_string($link,$_POST['telefon_parinte']),
+    mysqli_real_escape_string($link,md5($_POST['parola2_parinte'])),
+    mysqli_real_escape_string($link,'parinte'));
 
 
-$result = mysql_query($query);
+$result = mysqli_query($link, $query);
 
 // Check result
 // This shows the actual query sent to MySQL, and the error. Useful for debugging.
 if (!$result) {
-    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message  = 'Invalid query: ' . mysqli_error($link) . "\n";
     $message .= 'Whole query: ' . $query;
     die($message);
 }}
 
 if(isset($_POST['login1_parinte'])){ 
   $query = sprintf("SELECT * from utilizatori where email = '%s' and parola = '%s'",
-    mysql_real_escape_string($_POST['email_parinte']),
-    mysql_real_escape_string(md5($_POST['parola1_parinte'])));
+    mysqli_real_escape_string($link,$_POST['email_parinte']),
+    mysqli_real_escape_string($link,md5($_POST['parola1_parinte'])));
 
-$result = mysql_query($query);
+$result = mysqli_query($link,$query);
 
 // Check result
 // This shows the actual query sent to MySQL, and the error. Useful for debugging.
 if (!$result) {
-    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message  = 'Invalid query: ' . mysqli_error($link) . "\n";
     $message .= 'Whole query: ' . $query;
     die($message);
 }else { 
-$utilizator = mysql_fetch_assoc($result);
+$utilizator = mysqli_fetch_assoc($result);
 
 
 if(isset($utilizator)){
   $_SESSION['utilizator'] = $utilizator;
 }
 
+header('Location: index.php');
 
 }
 }
@@ -71,10 +65,21 @@ if(isset($utilizator)){
         margin-left: 0px;
         margin-bottom: 0px;
         margin-right: 0px;">
-        <?php
-            require_once 'meniu.php';
-            
-            ?>
+        <ul class = "meniu">
+<?php 
+if(!isset($_SESSION['utilizator'])){?>
+      <li><a class="active" href="login-register.php">Login|Register</a></li>
+
+<?php } else{
+  ?>
+  <li><a  href="logout.php">Logout</a></li>
+  <?php } ?>
+      
+      <li><a href="contact.php">Contact</a></li>
+      <li><a href="teste.php">Teste</a></li>
+      <li><a href="despre.php">Despre</a></li>
+      <li><a href="index.php">Acasa</a></li>
+    </ul>
         <div class = "imag">
             <img class = "imaginetop" src="images/kids.png" alt=""><br>
             <div>

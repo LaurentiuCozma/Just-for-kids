@@ -1,3 +1,9 @@
+<?php
+
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +16,21 @@
              margin-left: 0px;
              margin-bottom: 0px;
              margin-right: 0px;">
-    <?php
-      require_once 'meniu.php';
+    <ul class = "meniu">
+<?php 
+if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
+      <li><a href="login-register.php">Login|Register</a></li>
 
-    ?>
+<?php } else{
+  ?>
+  <li><a  href="logout.php">Logout</a></li>
+  <?php } ?>
+      
+      <li><a href="contact.php">Contact</a></li>
+      <li><a href="teste.php">Teste</a></li>
+      <li><a class="active" href="despre.php">Despre</a></li>
+      <li><a href="index.php">Acasa</a></li>
+    </ul>
 
     <div class = "imag">
       <img class = "imaginetop" src="images/kids.png" alt=""><br>
