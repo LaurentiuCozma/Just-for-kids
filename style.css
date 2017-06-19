@@ -97,15 +97,7 @@
     text-align: left;
 }
 
-/*.teste {
-	width:50%;
-	float:left;
-	margin-left: 2.3%;
-	border-radius:25px;
-	border: 1px solid black;
-	margin-bottom: 170px;
-	margin-top: 25px;
-}*/
+
 .formular {
 	width:48%;
 	float:left;
@@ -187,7 +179,6 @@
     background-color: #333;
     width:100%;
     /*position:fixed;*/
-    top:0px;
 	}
 
 .meniu  li {
@@ -206,15 +197,20 @@
 .meniu  li a:hover {
     background-color: #111;
 }
-.meniu li a.active {
-    background-color: #111;
-}
+
 
 /*end navbar*/
+
+
 
 .form_table {
 	margin: 0 auto;
 }
+
+
+
+
+
 
 
 /*footer*/
@@ -296,9 +292,11 @@
 }
 
 .QuestionImage{
-	max-width: 200px;
-	max-height: 100px;
+	max-width: 400px;
+	max-height: 200px;
 }
+
+
 
 
 /*end pagina teste*/

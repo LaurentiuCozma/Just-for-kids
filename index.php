@@ -41,28 +41,28 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
           <div class="imgbox"><img src="images/1.png" alt=""/></div><br><br>
           <p>Se vor oferi mai multe niveluri de dificultate in functie de varsta copiilor.</p><br>
           <p>Ofera copiilor mijloace amuzante de invatare si testare interactiva a cunostintelor generale dintr-un domeniu ales.</p><br>
-          <button type = "button" class="buton"><a href="teste.html">Vezi teste &raquo;</a></button>
+          <button type = "button" class="buton"><a href="teste.php">Vezi teste &raquo;</a></button>
     </div>
     <div class="box">
           <h2>Literatura</h2>
           <div class="imgbox"><img src="images/2.png" alt=""/></div><br><br>
           <p>Se vor oferi mai multe niveluri de dificultate in functie de varsta copiilor.</p><br>
           <p>Ofera copiilor mijloace amuzante de invatare si testare interactiva a cunostintelor generale dintr-un domeniu ales.</p><br>
-          <button type = "button" class="buton"><a href="teste.html">Vezi teste &raquo;</a></button>
+          <button type = "button" class="buton"><a href="teste.php">Vezi teste &raquo;</a></button>
     </div>
     <div class="box">
           <h2>Muzica</h2>
           <div class="imgbox"><img src="images/3.png" alt=""/></div><br><br>
           <p>Se vor oferi mai multe niveluri de dificultate in functie de varsta copiilor.</p><br>
           <p>Ofera copiilor mijloace amuzante de invatare si testare interactiva a cunostintelor generale dintr-un domeniu ales.</p><br>
-          <button type = "button" class="buton"><a href="teste.html">Vezi teste &raquo;</a></button>
+          <button type = "button" class="buton"><a href="teste.php">Vezi teste &raquo;</a></button>
     </div>
     <div class="box">
           <h2>Geografie</h2>
           <div class="imgbox"><img src="images/4.png" alt=""/></div><br><br>
           <p>Se vor oferi mai multe niveluri de dificultate in functie de varsta copiilor.</p><br>
           <p>Ofera copiilor mijloace amuzante de invatare si testare interactiva a cunostintelor generale dintr-un domeniu ales.</p><br>
-          <button type = "button" class="buton"><a href="teste.html">Vezi teste &raquo;</a></button>
+          <button type = "button" class="buton"><a href="teste.php">Vezi teste &raquo;</a></button>
     </div>
 </div>
     <div class="footer">
