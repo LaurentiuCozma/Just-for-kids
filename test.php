@@ -18,12 +18,14 @@ $query = sprintf("SELECT * FROM intrebari WHERE test_id = '%s'", mysqli_real_esc
 
 $result = mysqli_query($link, $query);
 
-// evaluate answers
+/* evaluarea testului */
 
-if(isset($_POST['evaluate'])){
+
+if(isset($_POST['evaluate'])){  /* daca s-a trimis formularul cu raspunsurile */
+	
 	$report = [];
 	if(empty($_POST['raspuns'])){
-		$_POST['raspuns'] = [];
+		$_POST['raspuns'] = []; 
 	}
 	$correct_answers = 0;
 	$query = sprintf("SELECT count(*) total_questions FROM intrebari WHERE test_id = '%s'", mysqli_real_escape_string($link,$test_id));
@@ -32,35 +34,38 @@ if(isset($_POST['evaluate'])){
 	$total_questions = mysqli_fetch_assoc($result2)['total_questions'];
 
 	foreach($_POST['raspuns'] as $key => $value){
-		$question_id = explode('_', $key)[1];
-		$child_answer = $value[0];
+		$question_id =$key;
+		$child_answer = $value;
 
 		$query = sprintf("SELECT * FROM intrebari WHERE id=%s", mysqli_real_escape_string($link,$question_id));
 
 		$result3 = mysqli_query($link, $query);
 		$row = mysqli_fetch_assoc($result3);
 
-		if($row['raspuns_corect'] == 'raspuns' . intval($child_answer)){
+		if($row['raspuns_corect'] == 'raspuns' . $child_answer){ /* daca raspunsul copilului este corect incrementez*/
 			$correct_answers++;
 		}
 
 		$report['answers'][] = [
 			'question' => $row['intrebare'],
-			'child_answer' => $row['raspuns' . intval($child_answer[0])],
-			'correct_answer' => $row[$row['raspuns_corect']]
+			'child_answer' => $row['raspuns' . $child_answer],
+			'correct_answer' => $row[$row['raspuns_corect']] /*raspuns_corect -> coloana din intrebari*/
 		];
 	}
 
 	$report['correct_answers'] = $correct_answers . '/' . $total_questions;
 
-	$query = sprintf("INSERT INTO rezultate(copil_id, test_id, rezultat) VALUES (%s, %s, %s)",
+/*	$query = sprintf("INSERT INTO rezultate(copil_id, test_id, rezultat) VALUES (%s, %s, %s)",
 		mysqli_real_escape_string($link, $_SESSION['copil']['id']),
 		mysqli_real_escape_string($link, $test_id),
 		mysqli_real_escape_string($link, $correct_answers)
 	);
 
-	mysqli_query($link, $query);
+	mysqli_query($link, $query); */
 }
+
+/* evaluarea testului + raportul*/
+
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +98,7 @@ if(isset($_POST['evaluate'])){
     		<div style="background-color: #FFF !important">
         		<div class="teste">
         			<br/>
-					<form method="post">
+					<form method="post"> <!-- Afisarea testului -->
 						<table class="TestTable">
 							<tr>
 								<th>#</th>
@@ -104,7 +109,7 @@ if(isset($_POST['evaluate'])){
 								<th>Raspuns4</th>
 							</tr>
 							<?php
-								$i = 0;
+								$i = 1;
 								while($row = mysqli_fetch_assoc($result)) { ?>
 							<tr>
 								<td><?php echo $i++; ?></td>
@@ -116,19 +121,19 @@ if(isset($_POST['evaluate'])){
 									<?php } ?>
 								</td>
 								<td>
-									<input type="radio" name="raspuns[intrebare_<?php echo $row['id']?>][]" value="1"/>
-									<?php echo $row['raspuns1']; ?>
+									<input type="radio" name="raspuns[<?php echo $row['id']?>]" value="1"/>
+									<?php echo $row['raspuns1']; ?> <!-- raspunsul din BD -->
 								</td>
 								<td>
-									<input type="radio" name="raspuns[intrebare_<?php echo $row['id']?>][]" value="2"/>
+									<input type="radio" name="raspuns[<?php echo $row['id']?>]" value="2"/>
 									<?php echo $row['raspuns2']; ?>
 								</td>
 								<td>
-									<input type="radio" name="raspuns[intrebare_<?php echo $row['id']?>][]" value="3"/>
+									<input type="radio" name="raspuns[<?php echo $row['id']?>]" value="3"/>
 									<?php echo $row['raspuns3']; ?>
 								</td>
 								<td>
-									<input type="radio" name="raspuns[intrebare_<?php echo $row['id']?>][]" value="4"/>
+									<input type="radio" name="raspuns[<?php echo $row['id']?>]" value="4"/>
 									<?php echo $row['raspuns4']; ?>
 								</td>
 							</tr>
@@ -141,7 +146,9 @@ if(isset($_POST['evaluate'])){
 						<br/>
 						<br/>
 					</form>
-					<?php if(isset($report)){ ?>
+					<!-- /Afisarea testului -->
+
+					<?php if(isset($report)){ ?>   <!-- Afisarea raportului -->
 							<h2>Raspunsuri corecte: <?php echo $report['correct_answers']?></h2>
 							<h3>Raport:</h3>
 							<table class="TestTable">
@@ -158,10 +165,10 @@ if(isset($_POST['evaluate'])){
 								<tr>
 									<td><?php echo $value['question']; ?></td>
 									<td><?php echo $value['child_answer']; ?></td>
-									<td><?php echo $value['correct_answer']; ?></td>
+									<td><?php echo $value['correct_answer']; ?></td> <!-- afisez fiecare intrebare cu r si r_c -->
 								</tr>
 							<?php } ?>
-							</table>
+							</table> <!-- Afisarea raportului -->
 						<?php
 						}
 					?>

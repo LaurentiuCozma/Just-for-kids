@@ -8,6 +8,12 @@ if (!$link) {
 
 if(isset($_POST['register_parinte'])){
 
+
+    if($_POST['nume2_parinte'] == '' || $_POST['parola2_parinte'] == ''){
+        header('Location:login-register.php');
+        exit;
+    }
+
 $query = sprintf("INSERT INTO utilizatori (nume_prenume,email,telefon,parola,tip) values ('%s','%s','%s','%s','%s')",
     mysqli_real_escape_string($link,$_POST['nume2_parinte']),
     mysqli_real_escape_string($link,$_POST['mail_parinte']),
@@ -18,8 +24,7 @@ $query = sprintf("INSERT INTO utilizatori (nume_prenume,email,telefon,parola,tip
 
 $result = mysqli_query($link, $query);
 
-// Check result
-// This shows the actual query sent to MySQL, and the error. Useful for debugging.
+
 if (!$result) {
     $message  = 'Invalid query: ' . mysqli_error($link) . "\n";
     $message .= 'Whole query: ' . $query;
@@ -33,8 +38,7 @@ if(isset($_POST['login1_parinte'])){
 
 $result = mysqli_query($link,$query);
 
-// Check result
-// This shows the actual query sent to MySQL, and the error. Useful for debugging.
+
 if (!$result) {
     $message  = 'Invalid query: ' . mysqli_error($link) . "\n";
     $message .= 'Whole query: ' . $query;
@@ -100,9 +104,9 @@ if(!isset($_SESSION['utilizator'])){?>
                                     <td><input type="password" name="parola1_parinte" id="parola1_parinte" value="" size="22" /></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="tine-minte1_parinte"></td>
+                                    <td><label for="tine-minte1_parinte">Tine minte</label></td>
                                     <td><input class="checkbox" type="checkbox" name="tine-minte1_parinte" id="tine-minte1_parinte" checked="checked" /></td>
-                                    Tine minte</label>
+                                    
                                 </tr>
                                 <tr>
                                     <td><input type="submit" name="login1_parinte" id="login1_parinte" value="Autentificare" /></td>
@@ -155,12 +159,12 @@ if(!isset($_SESSION['utilizator'])){?>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="tine-minte_parinte">
+                                            <label for="tine-minte_parinte">Tine minte</label>
                                         </td>
                                         <td>
                                         <input class="checkbox" type="checkbox" name="tine-minte_parinte" id="tine-minte_parinte" checked="checked" /></td>
                                     </tr>
-                                    Tine minte</label>
+                                    
                                     <tr>
                                         <td>
                                             <input type="submit" name="register_parinte" id="login2_parinte" value="Inregistrare" />

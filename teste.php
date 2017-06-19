@@ -1,5 +1,6 @@
 <?php   
 
+
 session_start();
 
 $link = mysqli_connect('localhost', 'root', '','proiect-tw');
@@ -7,19 +8,23 @@ if (!$link) {
     die('Eșec la conectare: ' . mysqli_error($link));
 }
 
-$query = sprintf("select * from Teste");
+$query = "select * from Teste";
 
 $result4 = mysqli_query($link,$query);
 
-$query = sprintf("select * from Dificultati");
+$query = "select * from Dificultati";
 
 $result = mysqli_query($link,$query);
 
 $questions_count = 0;
 
-if(isset($_GET['TestID'])){
+
+
+/*Folosesc $result2 pentru a repopula informatiile testelui curent
+  Folosesc $question_count pentru a verifica daca nu am depasit cele 10 intrebari*/
+if(isset($_GET['TestID'])){ 
   $query = sprintf("select * from Teste where id = '%s'", mysqli_real_escape_string($link,$_GET['TestID']));
-  $result2 = mysqli_query($link,$query);
+  $result2 = mysqli_query($link,$query); 
 
   $row2 = mysqli_fetch_assoc($result2);
 
@@ -30,6 +35,8 @@ if(isset($_GET['TestID'])){
   $questions_count = mysqli_fetch_assoc($result3);
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -58,23 +65,25 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
   <div class="imag">
     <img alt="" class="imaginetop" src="images/kids.png"><br>
     <div>
-      <div style="background-color: #FFF !important">
-        <div class="teste">
-          <?php
+      <div style="background-color: #FFF ">
+        <div>
+
+          <?php /* daca suntem logati ca adminul*/
+
+
           if(isset($_SESSION['utilizator'])){
             if($_SESSION['utilizator']['tip'] == 'admin') {
           ?>
           <form action='AddTest.php' class="AddTestForm" method='post' enctype="multipart/form-data">
             <fieldset>
             <legend><h2>Adaugare test</h2></legend>
-              <a href="teste.php"><h3>Adauga un nou test</h3></a>
+              <a href="teste.php"><h3>Adauga un nou test</h3></a> <!-- se scoate hidden id-ul pentru a crea un test nou -->
+              
               <table class="AddTestTable">
-              <tr>
-              </tr>
               <tr><td><input type="hidden" value="<?php echo isset($_GET['TestID']) ? $_GET['TestID'] : ''; ?>" name="TestID"></td></tr>
                 <tr>
                   <td><label>Nume test</label></td>
-                  <td><input value="<?php echo isset($row2['nume']) ? $row2['nume'] : '' ?>" name="nume_test" type="text"></td>
+                  <td><input value="<?php echo isset($row2['nume']) ? $row2['nume'] : '' ?>" name="nume_test" type="text"></td> <!-- populez campul nume cand adaug o noua intrebare -->
                 </tr>
                 <tr>
                   <td><label>Dificultate</label></td>
@@ -86,6 +95,7 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
                   ?>
                  
                     <option <?php if( isset($row2['dificultate_id']) && $row2['dificultate_id'] == $row['id']) echo 'selected="selected"' ?> value='<?php echo $row['id']; ?>'>
+                    <!-- iterez prin dificultati. Daca dificultatea curenta este=dificultatea testului o pun fiin selected -->
                       <?php echo $row['dificultate']; ?>
                     </option>
                    <?php } ?> 
@@ -149,7 +159,10 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
               <hr>
               <button type="submit">Salveaza</button>
             </fieldset>
-          </form>
+
+          </form> <!-- daca suntem logati cu adminul -->
+
+          <!-- daca suntem logati pe parinte -->
           <?php } else if($_SESSION['utilizator']['tip'] == 'parinte'){ ?>
           <form class="AddChildForm" action="AddChild.php" method="post">
             <fieldset>
@@ -179,7 +192,7 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
 
                   ?>
                  
-                    <option <?php if( isset($row2['dificultate_id']) && $row2['dificultate_id'] == $row['id']) echo 'selected="selected"' ?> value='<?php echo $row['id']; ?>'>
+                    <option value='<?php echo $row['id']; ?>'>
                       <?php echo $row['dificultate']; ?>
                     </option>
                    <?php } ?>
@@ -202,8 +215,9 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
               <button type="submit">Salveaza</button>
             </fieldset>
           </form>
-          <?php }
-          } else {
+          <?php } /* daca suntem logati pe parinte */
+
+          } else { /* daca nu esti logat cu niciun utilizator si suntem pe pg de teste o sa trebuiasca sa te logezi ca copil*/
             if(!isset($_SESSION['copil'])){
           ?>
             <form method="post" action="LoginChild.php" class="LoginChildForm">
@@ -223,6 +237,8 @@ if(!isset($_SESSION['utilizator']) && !isset($_SESSION['copil'])){?>
                 <button type="submit">Logare</button>
               </fieldset>
             </form>
+            <!-- /* daca nu esti logat cu niciun utilizator si suntem pe pg de teste o sa trebuiasca sa te logezi ca copil*/ -->
+            
           <?php }else{
             $query = sprintf("SELECT * FROM teste WHERE id IN (%s)", $_SESSION['copil']['teste_admisibile']);
 

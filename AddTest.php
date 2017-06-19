@@ -18,7 +18,7 @@ $query = sprintf("INSERT INTO Teste (nume,dificultate_id,categorie) values ('%s'
     $TestID = $_POST['TestID'];
 }
 
-// move uploaded file
+
 
 if(!empty($_FILES['imagine'])){
     if($_FILES['imagine']['error'] == 0){

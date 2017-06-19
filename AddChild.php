@@ -7,6 +7,11 @@ if (!$link) {
     die('Eșec la conectare: ' . mysqli_error($mysql));
 }
 
+if($_POST['email_copil'] == '' || $_POST['parola'] == ''){
+        header('Location:teste.php');
+        exit;
+    }
+    
 $query = sprintf("INSERT INTO copii (user_id, nume, prenume, email, teste_admisibile, dificultate_id, parola) VALUES ('%s','%s','%s','%s','%s','%s','%s')",
 	mysqli_real_escape_string($link, $_SESSION['utilizator']['id']),
 	mysqli_real_escape_string($link, $_POST['nume_copil']),

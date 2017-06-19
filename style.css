@@ -13,7 +13,7 @@
 
 .box .imgbox, .box h2{
 	text-align:center;
-}
+}0
 
 .box p{
 	text-align: justify;
@@ -178,12 +178,11 @@
     overflow: hidden;
     background-color: #333;
     width:100%;
-    /*position:fixed;*/
+    position:fixed;
 	}
 
 .meniu  li {
     float: right;
-    display: block;
 }
 
 .meniu  li a {
