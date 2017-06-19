@@ -7,15 +7,7 @@ if (!$link) {
     die('Eșec la conectare: ' . mysqli_error($mysql));
 }
 
-echo '<pre>';
-var_dump($_POST['email_copil'] == '' || $_POST['parola'] == '');
-exit;
 
-
-if($_POST['email_copil'] == '' || $_POST['parola'] == ''){
-        header('Location:teste.php');
-        exit;
-    }
 
 $query = sprintf("SELECT * from copii where email = '%s' and parola = '%s'",
     mysqli_real_escape_string($link,$_POST['email_copil']),
